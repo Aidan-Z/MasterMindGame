@@ -3,31 +3,29 @@ import random
 options = ['R', 'G', 'B', 'P', 'O', 'Y']
 print(f"Color Options:\n{options}\n")
 
-combo = random.sample(options, 4) #random 4 colors
-print(combo)
+combo = random.sample(options, 4)
 
-level = 1 #player attempts left
-def check(guess): #function, takes in 'guess' (list of users 4 letter input)
-    count = 0 #variable to store correct letters in guess vs -> combo
+level = 1
+def check(guess):
+    count = 0
     board = ['_' for i in combo]
 
-    for i in guess: #for letters in user guess
-        if i in combo: #if letter in guess
+    for i in guess:
+        if i in combo:
 
-            x = combo.index(i) #get index of correct letter (exp: combo=rgby, guess=rfff, x=0 )
-            board[x] = i #change '-' with correct letter
+            x = combo.index(i)
+            board[x] = i
 
-            count += 1  # for each correct letter add 1 to letters
+            count += 1
     print(f"{count}/4 letters are in code")
     return board
 
 
-while level <=8: #while still have attempts left
+while level <=8:
     print(f"Level: {level}")
     user_input = input("Guess 4 individual letters: ").upper()
     guess = [i for i in user_input]
     game_board = check(guess)
-
 
     if game_board == combo:
         print('YOU WIN')
